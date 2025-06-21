@@ -1,7 +1,6 @@
 import unittest
 from ..dc_motor import DcMotor
 import numpy as np
-import matplotlib.pyplot as plt
 
 class DcMotorTestCase(unittest.TestCase):
     def test(self):

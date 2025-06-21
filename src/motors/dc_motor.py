@@ -1,5 +1,5 @@
-from ..control.state_space import StateSpace
 import numpy as np
+from control.state_space import StateSpace
 
 class DcMotor(StateSpace):
     def __init__(self, J, b, Kt, Ke, R, L):
