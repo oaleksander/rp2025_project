@@ -18,6 +18,11 @@
 pip install -r requirements.txt
 ```
 
+### Выполнение юнит-тестов тестов
+```
+python -m unittest discover src
+```
+
 ### Непосредственно запуск
 
 ```shell
