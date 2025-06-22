@@ -4,6 +4,7 @@ import numpy as np
 from project_repo.src.estimators.derivative_estimator import DerivativeEstimator
 from project_repo.src.estimators.filtered_derivative_estimator import FilteredDerivativeEstimator
 from project_repo.src.estimators.kalman_estimator import KalmanEstimator
+from project_repo.src.estimators.median_derivative_estimator import MedianDerivativeEstimator
 from project_repo.src.estimators.tracking_loop_estimator import TrackingLoopEstimator
 from project_repo.src.estimators.unknown_input_kalman_estimator import UnknownInputKalmanEstimator
 from project_repo.src.motors.dc_motor import DcMotor
@@ -75,6 +76,7 @@ def main():
     motor = DcMotor(J=2.7e-5, b=1e-5, Ke=0.02, Kt=0.01, R=1.5, L=1e-5)
     derivative = DerivativeEstimator()
     filtered_derivative = FilteredDerivativeEstimator(5)
+    median_derivative = MedianDerivativeEstimator(5)
     tracking_loop = TrackingLoopEstimator(2.4, 150)
 
     Q = np.diag([0, 5, 25])
@@ -90,6 +92,7 @@ def main():
         estimations = [
             ('Derivative', derivative.estimate(t_meas, x_meas)),
             ('Filtered derivative', filtered_derivative.estimate(t_meas, x_meas)),
+            ('Median derivative', median_derivative.estimate(t_meas, x_meas)),
             ('Tracking loop', tracking_loop.estimate(t_meas, x_meas)),
             ('Unknown input kalman', no_input_kalman.estimate(t_meas, x_meas)),
             ('Kalman', kalman.estimate(t_meas, x_meas, u)),
