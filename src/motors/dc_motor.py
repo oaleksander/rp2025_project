@@ -2,7 +2,24 @@ import numpy as np
 from control.state_space import StateSpace
 
 class DcMotor(StateSpace):
+    """
+    Класс для моделирования работы двигателя постоянного тока
+
+    Реализован поверх State-space
+    """
+
     def __init__(self, J, b, Kt, Ke, R, L):
+        """
+        Инициализация двигателя постоянного тока
+
+        :param J: Момент инерции [Кг * м^2]
+        :param b: Коэффициент вязкого трения [Нм/рад/с]
+        :param Kt: Постоянная силы [Нм/А]
+        :param Ke: Постоянная обратной ЭДС [В/рад/с]
+        :param R: Сопротивление катушек [Ом]
+        :param L: Индуктивность катушек [Гн]
+        """
+
         self.J = J
         self.b = b
         self.Kt = Kt
@@ -19,12 +36,30 @@ class DcMotor(StateSpace):
 
     @staticmethod
     def pos(x) -> float:
+        """
+        Получить положение мотора
+
+        :param x: Вектор состояния
+        :return: Положение [рад]
+        """
         return float(x[0][0])
 
     @staticmethod
     def vel(x) -> float:
+        """
+        Получить скорость мотора
+
+        :param x: Вектор состояния
+        :return: Скорость [рад/с]
+        """
         return float(x[1][0])
 
     @staticmethod
     def current(x) -> float:
+        """
+        Получить силу тока мотора
+
+        :param x: Вектор состояния
+        :return: Сила тока [А]
+        """
         return float(x[2][0])

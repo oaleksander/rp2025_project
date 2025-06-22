@@ -2,6 +2,9 @@ import unittest
 from ..inverse_quadrature_encoder import InverseQuadratureEncoder
 
 class InverseQuadratureEncoderTestCase(unittest.TestCase):
+    """
+    Тест обратного квадратурного энкодера
+    """
     def test(self):
         iqe = InverseQuadratureEncoder()
         self.assertEqual((1, 0), iqe.get(-3))

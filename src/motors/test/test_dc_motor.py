@@ -3,6 +3,10 @@ from ..dc_motor import DcMotor
 import numpy as np
 
 class DcMotorTestCase(unittest.TestCase):
+    """
+    Тест двигателя постоянного тока
+    """
+
     def test(self):
         motor = DcMotor(J=2.7e-5, b=1e-5, Ke=0.02, Kt=0.01, R=1.5, L=1e-5)
         Ts = 0.001

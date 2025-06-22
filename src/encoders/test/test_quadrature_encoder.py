@@ -2,6 +2,9 @@ import unittest
 from ..quadrature_encoder import QuadratureEncoder
 
 class QuadratureEncoderTestCase(unittest.TestCase):
+    """
+    Тест квадратурного энкодера
+    """
     def test(self):
         encoder = QuadratureEncoder(0)
         self.assertEqual(0, encoder.ticks)
